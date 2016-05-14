@@ -1,0 +1,52 @@
+// Colours
+$palettes: (
+  gray: (
+    white:      #fff,
+    light:      #f2f2f2,
+    light-1:    #fafafa,
+    light-2:    #f5f5f5,
+    base:       #3c3c3c,
+    medium:     #e6e6e6,
+    dark:       #555,
+    darker:     #333,
+    black:      #000,
+    mail:       #7b8491
+  ),
+  pink: (
+    base:       #ff4081,
+    secondary:  #ba105d,
+    tertiary:   #753c56,
+    quaternary: #e27c94
+  ),
+  orange: (
+    base:       #ea6f36,
+    secondary:  #d8582b,
+    tertiary:   #923e20,
+    quaternary: #d38653
+  ),
+  red: (
+    base:       #edd71f,
+    secondary:  #b53040,
+    tertiary:   #831522,
+    quaternary: #db5a62,
+    gplus:      #dc4437
+  ),
+  yellow: (
+    base:       #edd71f,
+    dark:       #c6b100,
+    secondary:  #ffa000,
+    tertiary:   #965324,
+    quaternary: #e6a041
+  ),
+  blue: (
+    base:       #1fedeb,
+    secondary:  #283593,
+    fb:         #3b5999,
+    tw:         #55acee
+  )
+
+);
+
+// General
+$c-bg-main: palette(gray, base);
+$c-text-main: palette(gray, white);

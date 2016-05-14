@@ -1,0 +1,53 @@
+%icon {
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+@mixin image-and-fallback($name) {
+  @extend %icon;
+  background-image: img('icons/' + $name + '.svg');
+
+  .no-glue-svg-images & {
+    background-image: img('png-fallbacks/' + $name + '.png');
+  }
+}
+
+$icons: (logo, example-icon);
+
+@each $b in $icons {
+  %icon-#{$b} {
+    @include image-and-fallback($b);
+  }
+}
+
+$logo-google-ratio: 312 / 104;
+
+.logo-google {
+  display: inline-block;
+  width: rem(32 * $logo-google-ratio);
+  height: rem(32);
+  vertical-align: middle;
+}
+
+.google-logo--mono__letter {
+  fill: currentColor;
+}
+
+.arrow-color {
+  stroke: currentColor;
+}
+
+.bullet-color {
+  fill: currentColor;
+  stroke: currentColor;
+}
+
+.profile-contact {
+  fill: currentColor;
+  stroke: currentColor;
+}
+
+.closeicon {
+  fill: currentColor;
+  stroke: currentColor;
+}

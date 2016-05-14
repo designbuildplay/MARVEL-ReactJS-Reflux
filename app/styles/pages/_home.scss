@@ -1,0 +1,29 @@
+.home-page {
+
+	.into-info{
+		position: absolute;
+		top: 75%;
+		width: 100%;
+		z-index: 1;
+		text-align: center;
+		color: white;
+	}
+
+	.into-logo{
+		position: absolute;
+		top: 50%;
+		width: 100%;
+		text-align: center;
+		@include transform(translateY(-50%));
+	    @include transition($nav-time transform $ease-bouncer);
+
+		img{
+			width: 300px;
+			height: auto;
+		}
+
+		&:hover{
+			@include transform(scale(1.4,1.4) translateY(-35%));
+		}
+	}
+}

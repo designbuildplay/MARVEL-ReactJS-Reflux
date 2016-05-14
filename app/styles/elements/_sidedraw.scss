@@ -1,0 +1,123 @@
+.side-draw {
+  position: absolute;
+  z-index: 110;
+  width: 80%;
+  height: 100%;
+  color: white;
+  background: $red*2;
+  will-change:transform;
+  box-shadow: inset 0px 5px 11px -1px rgba(0,0,0,0.68);
+  overflow: hidden;
+  -ms-transform:translateX(-100%);
+  @include transform(translateX(-100%) translateZ(0));
+  @include transition($nav-time transform $ease-smooth1);
+  -webkit-transition: -webkit-transform $nav-time $ease-smooth1;
+  
+  a:link, a:active, a:visited, a:hover{
+    color: white;
+    font-weight: 800;
+  }
+
+  .side-header {
+    padding: 0 $padd;
+    height: $toolbarH;
+    line-height: $toolbarH;
+    color: white;
+    font-weight: 800;
+    background: $red;
+
+
+    @media screen and (orientation: portrait) {
+     height: 40px;
+     line-height: 40px;
+    }
+  }
+
+   ul{
+    margin: 0;
+    padding: 0;
+    li{list-style: none;}
+   }
+
+   
+   .nav{
+      li{
+        padding: rem(10) rem(20);
+        border-top: 1px solid white;
+        background: rgba(255,255,255, 0);
+        cursor: pointer;
+        @include transition(0.6s background $ease-smooth1);
+        -webkit-transition: 0.6s background $ease-smooth1;
+        font-size: rem(15);
+        img {
+          width: rem(15);
+          position: absolute;
+          right: 25px;
+          margin-top:2px;
+          @include transform(rotate(180deg) translateX(0px));
+          @include transition($ani-time transform $ease-smooth1);
+          -webkit-transition: -webkit-transform $ani-time $ease-smooth1;
+        }
+
+        &.borderbtm{
+          border-bottom: 1px solid white;
+        }
+
+        &:hover {
+          background: rgba(255,0,0, 0.6);
+          box-shadow: inset 0px 5px 11px -1px rgba(0,0,0,0.18);
+          img{
+            @include transform(rotate(180deg) translateX(-5px))
+          }
+        }
+      }
+
+
+   }
+
+   .legal {
+      width: 60%;
+      margin: 20px auto;
+      padding: 0;
+      font-size: rem(11);
+      text-align: center;
+      @media screen and ( max-height: $smallscreen ){
+        margin: 10px auto;
+        width: 80%;
+      }
+
+   }
+
+  &.open {
+    -ms-transform:translateX(0%);
+    @include transform(translateX(0%) translateZ(0));
+  }
+
+   @include breakpoint(tablet) {
+      // background: red
+   }
+
+   @include breakpoint(desktop-small) {
+      // background: blue
+   }
+
+   @media screen and (orientation: landscape) {
+       width: 40%;
+       min-width: 260px;
+     @include breakpoint(desktop-small) {
+       width: 30%;
+     }
+   }
+
+
+   .navdraw {
+      @include transition($ani-time transform $ease-smooth1);
+      -webkit-transition: -webkit-transform $ani-time $ease-smooth1;
+
+      &.hide {
+         -ms-transform:translateX(-100%);
+        @include transform(translateX(-100%) translateZ(0));
+      }
+   }
+
+}

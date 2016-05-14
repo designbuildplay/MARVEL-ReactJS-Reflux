@@ -1,0 +1,77 @@
+// Line height: lh-size / font-size.
+$font-sizes: (
+  baseSize: (
+    m: 14,
+    lh: 1.5
+  ),
+  h1:  (
+    m: 17,
+    t: 30,
+    d-small: 21,
+    d: 28,
+    lh: 1.16
+  ),
+  h2: (
+    m: 26,
+    lh: 1.2
+  ),
+  h3: (
+    m: 22,
+    t: 26,
+    lh: 1.2
+  ),
+  btn: (
+    m: 15,
+    lh: 1.5
+  ),
+);
+
+$font-size-factor: 1;
+
+$font-arial:            Arial, sans-serif;
+$font-roboto:           Roboto, $font-arial;
+$font-roboto-slab:      Roboto Slab, $font-arial;
+$font-patrick-hand-sc:  Patrick Hand SC, $font-roboto, cursive;
+
+
+// Classes to be extended.
+%font-roboto {
+  font-family: $font-roboto;
+}
+
+%font-roboto-regular {
+  @extend %font-roboto;
+  font-weight: 400;
+}
+
+%font-roboto-medium {
+  @extend %font-roboto;
+  font-weight: 500;
+}
+
+%font-roboto-bold {
+  @extend %font-roboto;
+  font-weight: 700;
+}
+
+%font-patrick-hand-sc {
+  font-family: $font-patrick-hand-sc;
+}
+
+.patrick-hand-sc {
+
+  h3 {
+    @extend %font-patrick-hand-sc;
+    margin: 0;
+    font-size: 3em;
+    color: palette(grey, black);
+
+    span.lowercase {
+      text-transform: lowercase;
+    }
+
+    span.big {
+      font-size: 1.125em;
+    }
+  }
+}

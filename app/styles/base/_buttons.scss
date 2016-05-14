@@ -1,0 +1,33 @@
+$shadow-opacity: .35;
+$btn-shadow: 0 1px 3px rgba(0, 0, 0, .12), 0 1px 2px rgba(0, 0, 0, .24);
+$btn-transition-easing: $ease-out-cubic;
+$btn-transition-duration: .35s;
+$btn-transition-duration-slow: 1s;
+$btn-icon-size: rem(12);
+
+$btn-focus-outline: rem(0) solid transparent;
+
+// Buttons container
+.buttons {
+  @include clearfix;
+}
+
+
+.button {
+  position: relative;
+  display: inline-block;
+  font-size: rem(12);
+  font-weight: 500;
+  color: white;
+  text-transform: uppercase;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    outline: 0 solid transparent;
+  }
+
+  &:focus .button__inner {
+    outline: 0 solid transparent;
+  }
+}

@@ -1,0 +1,49 @@
+//============================================================
+// Critical path definitions
+//============================================================
+$critical: critical;
+$non-critical: non-critical;
+
+//============================================================
+// Z-indexes
+//============================================================
+$z-elements: background, body, navbar-bg-close, navbar;
+$z-elements-nav: background, foreground;
+$z-elements-button: background, body, icon, text;
+
+//============================================================
+// General
+//============================================================
+
+$content-max-width: 600;
+$content-max-width-tablet: 768;
+$content-max-width-desktop-small: 960;
+$content-max-width-desktop-medium: 1120;
+$content-max-width-desktop-large: 1280;
+$content-padding: 20;
+
+//============================================================
+// Easing bar
+//============================================================
+
+$ease-bouncer: cubic-bezier(0.36, 0.6, 0.08, 1.38);
+$ease-smooth1: cubic-bezier(0.36, 0.6, 0.01, 0.82);
+
+//============================================================
+// Header menu
+//============================================================
+
+
+//============================================================
+// Main content
+//============================================================
+$card-padding: 40px;
+
+
+//============================================================
+// Transitions
+//============================================================
+$transition-duration-fast:       .2s;
+$transition-duration-default:    .3s;
+$transition-duration-slow:       .6s;
+$transition-duration-extra-slow: 1.4s;

@@ -1,0 +1,51 @@
+
+@import url("http://fast.fonts.net/t/1.css?apiType=css&projectid=0875292f-e7c1-4e97-8d8e-f95a95605e49");
+@font-face{
+  font-family:"Univers LT W01_45 Light1475944";
+  src:url("../fonts/a91ff084-fc8b-43f4-b0ea-111254b68524.eot?#iefix");
+  src:url("../fonts/a91ff084-fc8b-43f4-b0ea-111254b68524.eot?#iefix") format("eot"),url("../fonts/9fa24f1f-00d8-4d28-910f-78e925eaead6.woff2") format("woff2"),url("../fonts/d64e7bbc-e9ea-46ad-982c-6195ae4a3c61.woff") format("woff"),url("../fonts/d270a34d-b6b8-4c07-8454-03a6a3db7603.ttf") format("truetype"),url("../fonts/b2ea19ff-0237-4d94-a107-eaa12af161ef.svg#b2ea19ff-0237-4d94-a107-eaa12af161ef") format("svg");
+}
+
+
+p {
+  margin-bottom: 1em;
+}
+
+.heading {
+  margin-bottom: 0.618em;
+
+  &.-large {
+    font-size: $font-size--lg;
+    font-weight: bold;
+    line-height: $half-space * 3 / 2;
+  }
+
+  &.-medium {
+    font-size: $font-size--md;
+    font-weight: normal;
+    line-height: $half-space;
+  }
+
+  &.-small {
+    font-size: $font-size--sm;
+    font-weight: bold;
+    line-height: $half-space * 2 / 3;
+  }
+
+  &.-smallest {
+    font-size: $font-size--xs;
+    font-weight: bold;
+  }
+}
+
+h1 {
+  @extend .heading.-large;
+}
+
+h2 {
+  @extend .heading.-medium;
+}
+
+h3 {
+  @extend .heading.-small;
+}

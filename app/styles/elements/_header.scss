@@ -1,0 +1,89 @@
+header {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  min-height: $toolbarH;
+  padding: 0 10px;
+  text-align: left;
+  background: white;
+  z-index: 115;
+  color: $red;
+  will-change:transform;
+  @include transition($nav-time transform $ease-smooth1);
+  -webkit-transition: -webkit-transform $nav-time $ease-smooth1;
+  
+  @media screen and (orientation: portrait) {
+     min-height: 40px;
+     .hamburger {
+       padding: 12px 5px 2px;
+       transform: scale(0.8);
+     }
+  }
+
+  &.nobg{
+    background: transparent;
+  }
+  
+  &.hide {
+    @include transform(translateY(-$toolbarH) translateZ(0));
+
+  }
+
+  .close{
+    position: absolute;
+    top: 0;
+    left: -50px;
+    width:50px;
+    height: 50px;
+    opacity: 0;
+    @include transition($nav-time opacity $ease-smooth1);
+    svg {
+      width:50px;
+      height: 50px;
+    }
+
+    @media screen and (orientation: portrait) {
+      width:40px;
+      height: 40px;
+      left: -40px;
+      svg {
+        width:40px;
+        height: 40px;
+      }
+    }
+  }
+
+  .ico-nav svg{
+    height: 25px;
+    margin-top: 10px;
+    fill: $red;
+  }
+
+   &.slide {
+      -ms-transform:translateX(80%);
+      @include transform(translateX(80%) translateZ(0));
+      @media screen and (orientation: landscape) {
+         -ms-transform:translateX(40%);
+         @include transform(translateX(40%) translateZ(0));
+         @include breakpoint(desktop-small) {
+             -ms-transform:translateX(30%);
+             @include transform(translateX(30%) translateZ(0));
+         }
+      }
+
+      .close{
+        opacity: 1;
+      }
+      .hamburger{
+        opacity: 0;
+      }
+   }
+
+   @include breakpoint(tablet) {
+      // background: red
+   }
+
+   @include breakpoint(desktop-small) {
+      // background: blue
+   }
+}

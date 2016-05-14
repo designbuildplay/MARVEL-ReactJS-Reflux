@@ -1,0 +1,89 @@
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-width: rem($threshold-min-width);
+  font-size: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: always;
+}
+
+html {
+  // Remove 300ms delay on Windows Mobile.
+  // Ref: http://updates.html5rocks.com/2013/12/300ms-tap-delay-gone-away
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+
+  &.no-scroll {
+    overflow: hidden;
+  }
+}
+
+body {
+  @extend %font-roboto-regular;
+  @include font-size(baseSize);
+  position: relative;
+  font-weight: 400;
+  // background-color: $c-bg-main;
+}
+
+[type=search] {
+  // resets webkit styling on search inputs
+  -webkit-appearance: none;
+}
+// Style the webkit validation message for forms
+::-webkit-validation-bubble-message {
+  padding: 40px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  @extend %font-roboto-bold;
+}
+
+a {
+  color: palette(gray, base);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+p {
+  line-height: 1.5; // http://webaim.org/standards/wcag/checklist#sc1.4.8
+}
+
+figure {
+  margin: 0;
+  line-height: 0;
+
+  figcaption {
+    line-height: 1.5;
+  }
+}
+
+iframe {
+  width: 100%;
+  line-height: 0;
+}
+
+img {
+  width: 100%;
+}
+
+
+.link-underline {
+  text-decoration: underline;
+}
+
+.main__container {
+  clear: both;
+}

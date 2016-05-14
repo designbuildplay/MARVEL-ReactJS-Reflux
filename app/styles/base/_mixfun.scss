@@ -1,0 +1,402 @@
+//============================================================
+// Layout
+//============================================================
+
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+%clear-browserstyles {
+  // @include appearance(none);
+  // @include background(transparent);
+  padding: 0;
+  margin: 0;
+  border: 0 solid transparent;
+  list-style: none;
+  outline: none;
+}
+
+%not-selectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+%hidden-backface {
+  // @include backface-visibility(hidden);
+}
+
+%transparent-interaction {
+  // @include user-select(none);
+  -webkit-tap-highlight-color: transparent;
+}
+
+// inline-block vertical centering
+
+%vertical-center-outer {
+  font-size: 0;
+
+  &:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+  }
+}
+
+%vertical-center-inner {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+%shadow-to-bottom {
+  box-shadow: 0 4px 5px rgba(0, 0, 0, .04), 0 5px 12px rgba(0, 0, 0, .08);
+}
+
+%shadow-to-top {
+  box-shadow: 0 -10px 20px rgba(0, 0, 0, .04), 0 -3px 3px rgba(0, 0, 0, .05);
+}
+
+%divider {
+  // @extend %texture-paper;
+  // @include position(absolute, null null null 0);
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: rem(48);
+  content: '';
+  outline: 1px solid transparent;
+}
+
+//============================================================
+// Typography
+//============================================================
+
+// Requires inline-block or block for proper styling
+@mixin text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@mixin font-size($element) {
+  $elfont-sizes: map-get($font-sizes, $element);
+
+  @if $elfont-sizes != null {
+
+    font-size: rem(map-get($elfont-sizes, m) * $font-size-factor);
+
+    $lh: map-get($elfont-sizes, lh);
+    @if $lh != null {
+      line-height: $lh;
+    }
+
+    $mobile-medium: map-get($elfont-sizes, m-medium);
+    @if $mobile-medium != null {
+      @include breakpoint(mobile-medium) {
+        font-size: rem($mobile-medium * $font-size-factor);
+      }
+    }
+
+    $mobile-large: map-get($elfont-sizes, m-large);
+    @if $mobile-large != null {
+      @include breakpoint(mobile-large) {
+        font-size: rem($mobile-large * $font-size-factor);
+      }
+    }
+
+    $phablet: map-get($elfont-sizes, p);
+    @if $phablet != null {
+      @include breakpoint(phablet) {
+        font-size: rem($phablet * $font-size-factor);
+      }
+    }
+
+    $tablet: map-get($elfont-sizes, t);
+    @if $tablet != null {
+      @include breakpoint(tablet) {
+        font-size: rem($tablet * $font-size-factor);
+      }
+    }
+
+    $d-small: map-get($elfont-sizes, d-small);
+    @if $d-small != null {
+      @include breakpoint(desktop-small) {
+        font-size: rem($d-small * $font-size-factor);
+      }
+    }
+
+    $d-medium: map-get($elfont-sizes, d);
+    @if $d-medium != null {
+      @include breakpoint(desktop-medium) {
+        font-size: rem($d-medium * $font-size-factor);
+      }
+    }
+
+  } @else {
+    @warn 'There is no item "#{$element}" in the font-size list';
+  }
+}
+
+//============================================================
+//
+// Easing
+//
+// Thanks to Robert Penner for his sterling work on easing,
+// and to Matthew Lein for converting these functions into
+// approximated cubic-bezier functions. Respect.
+//
+// @see http://robertpenner.com/
+// @see http://matthewlein.com/ceaser/
+//
+//============================================================
+
+// Cubic
+$ease-in-cubic     :  cubic-bezier(0.550, 0.055, 0.675, 0.190);
+$ease-out-cubic    :  cubic-bezier(0.215, 0.610, 0.355, 1.000);
+$ease-in-out-cubic :  cubic-bezier(0.645, 0.045, 0.355, 1.000);
+
+// Circ
+$ease-in-circ      :  cubic-bezier(0.600, 0.040, 0.980, 0.335);
+$ease-out-circ     :  cubic-bezier(0.075, 0.820, 0.165, 1.000);
+$ease-in-out-circ  :  cubic-bezier(0.785, 0.135, 0.150, 0.860);
+
+// Expo
+$ease-in-expo      :  cubic-bezier(0.950, 0.050, 0.795, 0.035);
+$ease-out-expo     :  cubic-bezier(0.190, 1.000, 0.220, 1.000);
+$ease-in-Out-expo  :  cubic-bezier(1.000, 0.000, 0.000, 1.000);
+
+// Quad
+$ease-in-quad      :  cubic-bezier(0.550, 0.085, 0.680, 0.530);
+$ease-out-quad     :  cubic-bezier(0.250, 0.460, 0.450, 0.940);
+$ease-in-out-quad  :  cubic-bezier(0.455, 0.030, 0.515, 0.955);
+
+// Quart
+$ease-in-quart     :  cubic-bezier(0.895, 0.030, 0.685, 0.220);
+$ease-out-quart    :  cubic-bezier(0.165, 0.840, 0.440, 1.000);
+$ease-in-out-quart :  cubic-bezier(0.770, 0.000, 0.175, 1.000);
+
+// Quint
+$ease-in-quint     :  cubic-bezier(0.755, 0.050, 0.855, 0.060);
+$ease-out-quint    :  cubic-bezier(0.230, 1.000, 0.320, 1.000);
+$ease-in-out-quint :  cubic-bezier(0.860, 0.000, 0.070, 1.000);
+
+// Sine
+$ease-in-sine      :  cubic-bezier(0.470, 0.000, 0.745, 0.715);
+$ease-out-sine     :  cubic-bezier(0.390, 0.575, 0.565, 1.000);
+$ease-in-out-sine  :  cubic-bezier(0.445, 0.050, 0.550, 0.950);
+
+// Back
+$ease-in-back      :  cubic-bezier(0.600, -0.280, 0.735, 0.045);
+$ease-out-back     :  cubic-bezier(0.175,  0.885, 0.320, 1.275);
+$ease-in-out-back  :  cubic-bezier(0.680, -0.550, 0.265, 1.550);
+
+
+//============================================================
+// Media queries
+//
+// Possible values for $point:
+// mobile-big -> phablet -> tablet -> desktop -> desktop-big
+//
+// mobile-only -> mobile-big-only -> phablet-only -> tablet-only -> desktop-only
+//
+// mobile-landscape
+//
+//============================================================
+
+@mixin breakpoint($point) {
+
+  /* Material Design Adaptive Breakpoints */
+  /*
+    Below you'll find CSS media queries based on the breakpoint guidance
+    published by the Material Design team. You can choose to use, customise
+    or remove these breakpoints based on your needs.
+
+    http://www.google.com/design/spec/layout/adaptive-ui.html#adaptive-ui-breakpoints
+   */
+
+  // Standard: mobile first approach, increasing viewport width.
+  @if $point == mobile-medium {
+    @media screen and (min-width: rem($threshold-mobile-medium)) { @content; }
+  }
+  @if $point == mobile-large {
+    @media screen and (min-width: rem($threshold-mobile-large)) { @content; }
+  }
+  @else if $point == phablet {
+    @media screen and (min-width: rem($threshold-phablet)) { @content; }
+  }
+  @else if $point == tablet {
+    @media screen and (min-width: rem($threshold-tablet)) { @content; }
+  }
+  @else if $point == desktop-small {
+    @media screen and (min-width: rem($threshold-desktop-small)) { @content; }
+  }
+  @else if $point == desktop-medium {
+    @media screen and (min-width: rem($threshold-desktop-medium)) { @content; }
+  }
+  @else if $point == desktop-large {
+    @media screen and (min-width: rem($threshold-desktop-large)) { @content; }
+  }
+  @else if $point == desktop-xlarge {
+    @media screen and (min-width: rem($threshold-desktop-xlarge)) { @content; }
+  }
+
+  // Specific ranges
+  @else if $point == mobile-only {
+    @media screen and (max-width: rem($threshold-mobile-medium - 1)) { @content; }
+  }
+  @else if $point == mobile-medium-only {
+    @media screen and (min-width: rem($threshold-mobile-medium))
+                  and (max-width: rem($threshold-mobile-large - 1)) { @content; }
+  }
+  @else if $point == mobile-large-only {
+    @media screen and (min-width: rem($threshold-mobile-large))
+                  and (max-width: rem($threshold-phablet - 1)) { @content; }
+  }
+  @else if $point == phablet-only {
+    @media screen and (min-width: rem($threshold-phablet))
+                  and (max-width: rem($threshold-tablet - 1)) { @content; }
+  }
+  @else if $point == tablet-only {
+    @media screen and (min-width: rem($threshold-tablet))
+                  and (max-width: rem($threshold-desktop-small - 1)) { @content; }
+  }
+  @else if $point == desktop-small-only {
+    @media screen and (min-width: rem($threshold-desktop-small))
+                  and (max-width: rem($threshold-desktop-medium - 1)) { @content; }
+  }
+  @else if $point == desktop-medium-only {
+    @media screen and (min-width: rem($threshold-desktop-medium))
+                  and (max-width: rem($threshold-desktop-large - 1)) { @content; }
+  }
+  @else if $point == desktop-large-only {
+    @media screen and (min-width: rem($threshold-desktop-large))
+                  and (max-width: rem($threshold-desktop-xlarge - 1)) { @content; }
+  }
+
+  // Others
+  @else if $point == mobile-landscape {
+    @media screen and (orientation:landscape)
+                  and (max-width: rem($threshold-tablet)) { @content; }
+  }
+
+  @else if $point == retina {
+    @media
+      only screen and (-webkit-min-device-pixel-ratio: 2),
+      only screen and (   min--moz-device-pixel-ratio: 2),
+      only screen and (     -o-min-device-pixel-ratio: 2/1),
+      only screen and (        min-device-pixel-ratio: 2),
+      only screen and (              min-resolution: 75.6dpcm),
+      only screen and (                min-resolution: 192dpi),
+      only screen and (                min-resolution: 2dppx) {
+        @content;
+    }
+  }
+
+  @else if $point == mobile-not-short {
+    @media screen and (min-height: 420px) {
+      @content;
+    }
+  }
+
+  @else if $point == mobile-all {
+    @media screen and (max-width: rem($threshold-tablet - 1)) { @content; }
+  }
+
+  @else if $point == phablet-and-tablet {
+    @media screen and (min-width: rem($threshold-phablet))
+                  and (max-width: rem($threshold-desktop-small - 1)) { @content; }
+  }
+}
+
+//============================================================
+// Images
+//============================================================
+
+// Source: https://github.com/devatrox/Sunglass/
+$imgbase: "/sociallab/img/" !default;
+
+@function img($filename) {
+    @return url(#{$imgbase}#{$filename});
+}
+
+%bg-img {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@mixin retina-img($filename, $extension: png, $retina-suffix: -2x, $background-size: null) {
+  background-image: img("#{$filename}.#{$extension}?v=@@timestamp");
+  @include breakpoint(retina) {
+    background-image: img("#{$filename}#{$retina-suffix}.#{$extension}?v=@@timestamp");
+  }
+  @if $background-size {
+    background-size: $background-size;
+  }
+}
+
+
+//============================================================
+// Z-indexes
+//============================================================
+
+@function my-z($list, $element) {
+  $z-index: index($list, $element);
+  @if $z-index {
+    @return $z-index;
+  }
+  @warn 'There is no item "#{$element}" in this list; choose one of: #{$list}';
+  @return null;
+}
+
+//============================================================
+// Color palette
+//============================================================
+
+@function palette($palette, $tone: 'base') {
+  @return map-get(map-get($palettes, $palette), $tone);
+}
+
+//============================================================
+// KEY FRAME ANIMATION =======================================
+//============================================================
+
+@mixin animation($animate...) {
+    $max: length($animate);
+    $animations: '';
+
+    @for $i from 1 through $max {
+        $animations: #{$animations + nth($animate, $i)};
+
+        @if $i < $max {
+            $animations: #{$animations + ", "};
+        }
+    }
+    -webkit-animation: $animations;
+    -moz-animation:    $animations;
+    -o-animation:      $animations;
+    animation:         $animations;
+}
+
+@mixin keyframes($animationName) {
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+    @-moz-keyframes #{$animationName} {
+        @content;
+    }
+    @-o-keyframes #{$animationName} {
+        @content;
+    }
+    @keyframes #{$animationName} {
+        @content;
+    }
+}

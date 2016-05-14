@@ -1,0 +1,68 @@
+.about-page, .terms-page {
+  
+    position: relative;
+    height: 100%;
+    overflow-y: auto;
+    top: 50px;
+    padding: 20px 25px 100px 25px;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    
+    @media screen and (orientation: portrait) {
+       top: 40px;
+    }
+
+    .img{
+      text-align: center;
+      img {
+        max-height: 260px;
+        width: auto;
+
+       @include breakpoint(mobile-large) {
+         max-height: 400px;
+       }
+      }
+    }
+
+   .title{
+    margin-bottom: 30px;
+    color: $red;
+    font-size: rem(18);
+    font-weight: 400;
+   }
+
+   .sub{
+    margin-bottom: 30px;
+    color: $red;
+    font-size: rem(18);
+    font-weight: bold;
+   }
+
+   .content{
+      color: white;
+      padding-right: 60px;
+      @media screen and (orientation: portrait) {
+       padding-right: 30px;
+      }
+   }
+
+   .button{
+      color: white;
+      margin-top: 30px;
+      padding-right: 60px;
+      @media screen and (orientation: portrait) {
+       padding-right: 30px;
+      }
+
+      a:link, a:active, a:visited {
+        color: $red;
+        font-size: rem(14);
+        font-weight: 600;
+        text-decoration: none;
+        display: block;
+      }
+      a:hover {
+        color: white;
+      }
+   }
+}

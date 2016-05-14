@@ -1,0 +1,50 @@
+//============================================================================
+// Grids layout.
+//============================================================================
+
+/**
+ * Returns the literal number passed as a string.
+ * @param {number} $number Any number
+ */
+@function numberToString($number) {
+  // Matrices
+  $strings: 'one' 'two' 'three' 'four' 'five' 'six' 
+            'seven' 'eight' 'nine' 'ten' 'eleven' 'twelve' 'thirteen';
+
+  // Looping through all characters
+  $result: nth($strings, $number);
+
+  @return $result;
+}
+
+
+.container {
+  margin: 20px auto;
+  @include clearfix();
+}
+
+// $num-columns-grid columns grid.
+// .one.column, .two.columns, .three.columns ...
+.column,
+.columns {
+  margin-bottom: 20px;
+  padding: 0;
+  @include span-columns(12);
+  @include clearfix;
+  &:last-child {
+    margin-right: 0;
+  }
+
+  @for $i from 1 through $num-columns-grid {
+    $sNumber: numberToString($i);
+    &.#{$sNumber},
+    &.#{$sNumber} {
+      @include breakpoint(tablet) {
+        @include span-columns($i);
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}
