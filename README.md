@@ -12,3 +12,5 @@ Project using ReactJS ( with React Router and RefluxJS ), SASS, Gulp, and Browse
 3. To prepare assets for production, run the `gulp prod`
 
 ---
+
+Demo: http://designbuildplay.io/projects/_marvel-app/build/
